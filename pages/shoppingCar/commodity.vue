@@ -39,11 +39,19 @@
 				</view>
 			</view>
 
-
-
-
 		</view>
 
+		<view class="total">
+			<view class="all-select">
+				<radio :checked="false" />
+				<text>全选</text>
+			</view>
+			<view class="total-money">
+				<text>总计：999</text>
+				<button size="mini">去结算(?)件</button>
+			</view>
+
+		</view>
 
 	</view>
 </template>
@@ -60,9 +68,11 @@
 			radioChange(value) {
 				// let datas = JSON.parse(JSON.stringify(this._props.items));
 				this.storeSelect = !this.storeSelect;
-				
+				console.log(this.storeSelect)
+
+
 				// console.log(this.storeSelect);
-				
+
 				// let datas = this._props.items;
 				// datas.children.forEach((item) => item.check = !item.check)
 				// this.$emit("update:items", datas);
@@ -195,5 +205,37 @@
 			}
 		}
 
+		.total {
+			width: 100%;
+			height: 50px;
+			background: rgba(255, 255, 255, .8);
+			// background: red;
+			position: fixed;
+			bottom: 50px;
+			left: 0;
+			font-size: 18px;
+			@include flex-layout(space-between, center);
+
+			.all-select {
+				font-size: 14px;
+				margin-left: 10px;
+			}
+
+			.total-money {
+				@include flex-layout(space-between, center);
+				font-size: 18px;
+				margin-right: 10px;
+				text {
+					font-weight: 700;
+					margin-right: 10px;
+				}
+
+				button {
+					background: $theme-color;
+					color: white;
+					border-radius: 30px
+				}
+			}
+		}
 	}
 </style>
