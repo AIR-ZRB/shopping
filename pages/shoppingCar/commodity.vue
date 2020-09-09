@@ -3,6 +3,7 @@
 		<!-- 商品名字 -->
 		<view class="store-name">
 			<radio-group @change="radioChange">
+				<un-radio />
 				<label class="radio">
 					<radio :value="_props.items.storeName" :checked="storeSelect" />
 					<text class="name">{{_props.items.storeName}}</text>
@@ -57,44 +58,42 @@
 </template>
 
 <script>
+	import unRadio from "../../components/radio.vue";
 	export default {
 		props: ["items"],
 		data() {
 			return {
-				storeSelect: false
+				storeSelect: false,
+				datas: {}
 			}
+		},
+		components: {
+			unRadio
 		},
 		methods: {
 			radioChange(value) {
-				// let datas = JSON.parse(JSON.stringify(this._props.items));
+
 				this.storeSelect = !this.storeSelect;
-				console.log(this.storeSelect)
+				console.log(this.storeSelect);
 
 
-				// console.log(this.storeSelect);
+				this.datas.children.forEach((item) => item.check = this.storeSelect)
+				this.$emit("editCommodity", this.datas)
 
-				// let datas = this._props.items;
-				// datas.children.forEach((item) => item.check = !item.check)
-				// this.$emit("update:items", datas);
-
-
-
-				// console.log(datas)
-				// this.$nextTick(function() {
-				// 	console.log(this._props.items)
-				// })
 			},
 			countEdit(flag, index) {
-				let datas = JSON.parse(JSON.stringify(this._props.items));
-				if (flag === "add") datas.children[index].count = parseInt(datas.children[index].count) + 1;
-				
-				if (flag === "subtract") {
-					if (datas.children[index].count <= 1) return;
-					datas.children[index].count = parseInt(datas.children[index].count) - 1;
-				}
-				this.$emit("editCommodity", datas)
 
+				if (flag === "add") this.datas.children[index].count = parseInt(this.datas.children[index].count) + 1;
+
+				if (flag === "subtract") {
+					if (this.datas.children[index].count <= 1) return;
+					this.datas.children[index].count = parseInt(this.datas.children[index].count) - 1;
+				}
+				this.$emit("editCommodity", this.datas)
 			}
+		},
+		created() {
+			this.datas = JSON.parse(JSON.stringify(this._props.items));
 
 		}
 

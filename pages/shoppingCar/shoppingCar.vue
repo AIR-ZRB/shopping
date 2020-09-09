@@ -53,7 +53,7 @@
 				var editIndex = this.commodity.findIndex((item) => {
 					return item.storeName === datas.storeName;
 				})
-				console.log(datas)
+				// console.log(datas)
 				// this.commodity[editIndex] = datas;
 				this.$set(this.commodity, editIndex, datas)
 
