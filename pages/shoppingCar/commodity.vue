@@ -11,7 +11,7 @@
 		</view>
 
 
-		<view class="detail-message" v-for="items in _props.items.children" :key="items.name+ items.price">
+		<view class="detail-message" v-for="(items,index) in _props.items.children" :key="items.name+ items.price">
 			<!-- 商品图片 -->
 			<label class="radio">
 				<radio value="" :checked="items.check" />
@@ -26,9 +26,9 @@
 				<view class="price-count">
 					<text class="price">￥{{items.price}}</text>
 					<view class="count">
-						<text>-</text>
+						<text @click="countEdit('subtract',index)">-</text>
 						<text>{{items.count}}</text>
-						<text>+</text>
+						<text @click="countEdit('add',index)">+</text>
 					</view>
 				</view>
 
@@ -83,6 +83,16 @@
 				// this.$nextTick(function() {
 				// 	console.log(this._props.items)
 				// })
+			},
+			countEdit(flag, index) {
+				let datas = JSON.parse(JSON.stringify(this._props.items));
+				if (flag === "add") datas.children[index].count = parseInt(datas.children[index].count) + 1;
+				
+				if (flag === "subtract") {
+					if (datas.children[index].count <= 1) return;
+					datas.children[index].count = parseInt(datas.children[index].count) - 1;
+				}
+				this.$emit("editCommodity", datas)
 
 			}
 
@@ -225,6 +235,7 @@
 				@include flex-layout(space-between, center);
 				font-size: 18px;
 				margin-right: 10px;
+
 				text {
 					font-weight: 700;
 					margin-right: 10px;

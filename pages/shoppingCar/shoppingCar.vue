@@ -1,7 +1,7 @@
 <template>
 	<view class="shopping-car">
 		<clearCar v-if="commodity.length === 0" />
-		<commodity v-else v-for="item in commodity" :key="item.name + item.storeName" :items.sync="item" />
+		<commodity v-else v-for="item in commodity" :key="item.name + item.storeName" :items.sync="item" @editCommodity="editCommodity" />
 
 	</view>
 </template>
@@ -45,6 +45,22 @@
 
 				]
 			};
+		},
+		methods: {
+			editCommodity(datas) {
+				console.log(datas)
+				// if(datas.storeName)
+				var editIndex = this.commodity.findIndex((item) => {
+					return item.storeName === datas.storeName;
+				})
+				console.log(datas)
+				// this.commodity[editIndex] = datas;
+				this.$set(this.commodity, editIndex, datas)
+
+				console.log(editIndex);
+
+
+			}
 		},
 		components: {
 			clearCar,
