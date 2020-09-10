@@ -2,22 +2,19 @@
 	<view class="commodity">
 		<!-- 商品名字 -->
 		<view class="store-name">
-			<radio-group @change="radioChange">
-				<un-radio />
-				<label class="radio">
-					<radio :value="_props.items.storeName" :checked="storeSelect" />
-					<text class="name">{{_props.items.storeName}}</text>
-				</label>
-			</radio-group>
+			<un-radio :select="storeSelect" @toggle="radioChange" />
+			<text class="name">{{_props.items.storeName}}</text>
 		</view>
 
 
 		<view class="detail-message" v-for="(items,index) in _props.items.children" :key="items.name+ items.price">
 			<!-- 商品图片 -->
-			<label class="radio">
-				<radio value="" :checked="items.check" />
+			<view class="radio">
+				<un-radio :select="items.check" @toggle="itemsChange(index)"/>
 				<view class="image"></view>
-			</label>
+			</view>
+
+
 
 			<!-- 商品信息 -->
 			<view class="commodity-description">
@@ -44,7 +41,7 @@
 
 		<view class="total">
 			<view class="all-select">
-				<radio :checked="false" />
+				<un-radio :select="false" />
 				<text>全选</text>
 			</view>
 			<view class="total-money">
@@ -72,14 +69,14 @@
 		},
 		methods: {
 			radioChange(value) {
-
 				this.storeSelect = !this.storeSelect;
-				console.log(this.storeSelect);
-
-
 				this.datas.children.forEach((item) => item.check = this.storeSelect)
 				this.$emit("editCommodity", this.datas)
-
+			},
+			itemsChange(index){
+			
+				this.datas.children[index].check = !this.datas.children[index].check;
+				this.$emit("editCommodity", this.datas)
 			},
 			countEdit(flag, index) {
 
