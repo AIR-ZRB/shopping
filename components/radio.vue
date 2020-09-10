@@ -26,11 +26,13 @@
 	.radio {
 		width: 24px;
 		height: 24px;
+		font-size: 0;
 		float: left;
 		overflow: hidden;
 		border-radius: 50%;
 		// background: red;
 		border: 1px solid #ccc;
+		margin-right: 10px;
 		// text-align: center;
 		// font-size: 18px;
 		// color: #fff;
