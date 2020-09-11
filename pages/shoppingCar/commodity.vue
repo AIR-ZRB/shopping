@@ -10,7 +10,7 @@
 		<view class="detail-message" v-for="(items,index) in _props.items.children" :key="items.name+ items.price">
 			<!-- 商品图片 -->
 			<view class="radio">
-				<un-radio :select="items.check" @toggle="itemsChange(index)"/>
+				<un-radio :select="items.check" @toggle="itemsChange(index)" />
 				<view class="image"></view>
 			</view>
 
@@ -38,19 +38,6 @@
 			</view>
 
 		</view>
-
-		<view class="total">
-			<view class="all-select">
-				<un-radio :select="false" />
-				<text>全选</text>
-			</view>
-			<view class="total-money">
-				<text>总计：999</text>
-				<button size="mini">去结算(?)件</button>
-			</view>
-
-		</view>
-
 	</view>
 </template>
 
@@ -61,20 +48,23 @@
 		data() {
 			return {
 				storeSelect: false,
-				datas: {}
+				datas: {},
 			}
 		},
 		components: {
 			unRadio
 		},
+		// 商品没选中，店铺会继续选中
 		methods: {
-			radioChange(value) {
-				this.storeSelect = !this.storeSelect;
-				this.datas.children.forEach((item) => item.check = this.storeSelect)
+			radioChange(value = !this.storeSelect) {
+				// 店铺全选
+				
+				this.storeSelect = value;
+				this.datas.children.forEach((item) => item.check = value)
 				this.$emit("editCommodity", this.datas)
 			},
-			itemsChange(index){
-			
+			itemsChange(index) {
+				// 单个商品选中
 				this.datas.children[index].check = !this.datas.children[index].check;
 				this.$emit("editCommodity", this.datas)
 			},
@@ -87,11 +77,12 @@
 					this.datas.children[index].count = parseInt(this.datas.children[index].count) - 1;
 				}
 				this.$emit("editCommodity", this.datas)
-			}
+			},
+
 		},
 		created() {
 			this.datas = JSON.parse(JSON.stringify(this._props.items));
-
+			this.$on("allSelect", (value) => this.radioChange(value))
 		}
 
 
@@ -211,38 +202,6 @@
 			}
 		}
 
-		.total {
-			width: 100%;
-			height: 50px;
-			background: rgba(255, 255, 255, .8);
-			// background: red;
-			position: fixed;
-			bottom: 50px;
-			left: 0;
-			font-size: 18px;
-			@include flex-layout(space-between, center);
 
-			.all-select {
-				font-size: 14px;
-				margin-left: 10px;
-			}
-
-			.total-money {
-				@include flex-layout(space-between, center);
-				font-size: 18px;
-				margin-right: 10px;
-
-				text {
-					font-weight: 700;
-					margin-right: 10px;
-				}
-
-				button {
-					background: $theme-color;
-					color: white;
-					border-radius: 30px
-				}
-			}
-		}
 	}
 </style>

@@ -1,17 +1,30 @@
 <template>
 	<view class="shopping-car">
 		<clearCar v-if="commodity.length === 0" />
-		<commodity v-else v-for="item in commodity" :key="item.name + item.storeName" :items.sync="item" @editCommodity="editCommodity" />
-
+		<commodity v-else v-for="item in commodity" :key="item.name + item.storeName" :items.sync="item" :allData="commodity"
+		 @editCommodity="editCommodity" ref="test" />
+		<!-- 底下结算合计 -->
+		<view class="total">
+			<view class="all-select">
+				<un-radio :select="allSelect" @toggle="allSelectToggle" />
+				<text>全选</text>
+			</view>
+			<view class="total-money">
+				<text>{{totalMoney}}</text>
+				<button size="mini">{{totalCount}}</button>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
 	import clearCar from "./clearCar.vue";
 	import commodity from "./commodity.vue";
+	import unRadio from "../../components/radio.vue";
 	export default {
 		data() {
 			return {
+				allSelect: false,
 				// 假数据
 				commodity: [{
 						storeName: "青空自营",
@@ -48,23 +61,39 @@
 		},
 		methods: {
 			editCommodity(datas) {
-				console.log(datas)
-				// if(datas.storeName)
-				var editIndex = this.commodity.findIndex((item) => {
-					return item.storeName === datas.storeName;
-				})
-				// console.log(datas)
-				// this.commodity[editIndex] = datas;
+				var editIndex = this.commodity.findIndex((item) => item.storeName === datas.storeName)
 				this.$set(this.commodity, editIndex, datas)
-
-				console.log(editIndex);
-
-
+			},
+			allSelectToggle() {
+				this.allSelect = !this.allSelect;
+				this.$refs.test.forEach(item => item.$emit("allSelect", this.allSelect))
+			},
+		},
+		computed: {
+			totalMoney() {
+				let allMoney = 0;
+				this.commodity.forEach(item => {
+					item.children.forEach(items => {
+						if (items.check === true) allMoney += items.price * items.count;
+					})
+				})
+				return `总计: ${allMoney}`;
+			},
+			totalCount(){
+				let count = [];
+				this.commodity.forEach(item => {
+					// count = item.children.filter(items => items.check == true)
+					 item.children.filter(items => {
+						 if(items.check == true) count.push(items)
+					 })
+				})
+				return `去结算 ${count.length} 件`;
 			}
 		},
 		components: {
 			clearCar,
-			commodity
+			commodity,
+			unRadio
 		}
 	}
 </script>
@@ -72,5 +101,39 @@
 <style lang="scss">
 	.shopping-car {
 		background-color: #fafafa;
+	}
+
+	.total {
+		width: 100%;
+		height: 50px;
+		background: rgba(255, 255, 255, .8);
+		// background: red;
+		position: fixed;
+		bottom: 50px;
+		left: 0;
+		font-size: 18px;
+		@include flex-layout(space-between, center);
+
+		.all-select {
+			font-size: 14px;
+			margin-left: 10px;
+		}
+
+		.total-money {
+			@include flex-layout(space-between, center);
+			font-size: 18px;
+			margin-right: 10px;
+
+			text {
+				font-weight: 700;
+				margin-right: 10px;
+			}
+
+			button {
+				background: $theme-color;
+				color: white;
+				border-radius: 30px
+			}
+		}
 	}
 </style>
