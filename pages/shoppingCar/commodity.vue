@@ -58,7 +58,6 @@
 		methods: {
 			radioChange(value = !this.storeSelect) {
 				// 店铺全选
-				
 				this.storeSelect = value;
 				this.datas.children.forEach((item) => item.check = value)
 				this.$emit("editCommodity", this.datas)
@@ -66,6 +65,15 @@
 			itemsChange(index) {
 				// 单个商品选中
 				this.datas.children[index].check = !this.datas.children[index].check;
+				const flag = this.datas.children.every(item => item.check === true);
+				const flags = this.datas.children.some(item => item.check === false);
+				
+				
+				flag && this.radioChange();
+				if (flags === true) {
+					if (this.storeSelect === true) this.storeSelect = false;
+				}
+
 				this.$emit("editCommodity", this.datas)
 			},
 			countEdit(flag, index) {

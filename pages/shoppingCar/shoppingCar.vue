@@ -117,6 +117,7 @@
 		.all-select {
 			font-size: 14px;
 			margin-left: 10px;
+			@include flex-layout(center,center)
 		}
 
 		.total-money {
