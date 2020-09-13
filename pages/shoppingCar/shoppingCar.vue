@@ -55,7 +55,6 @@
 							count: "1",
 						}],
 					},
-
 				]
 			};
 		},
@@ -79,13 +78,13 @@
 				})
 				return `总计: ${allMoney}`;
 			},
-			totalCount(){
+			totalCount() {
 				let count = [];
 				this.commodity.forEach(item => {
 					// count = item.children.filter(items => items.check == true)
-					 item.children.filter(items => {
-						 if(items.check == true) count.push(items)
-					 })
+					item.children.filter(items => {
+						if (items.check == true) count.push(items)
+					})
 				})
 				return `去结算 ${count.length} 件`;
 			}
@@ -117,7 +116,7 @@
 		.all-select {
 			font-size: 14px;
 			margin-left: 10px;
-			@include flex-layout(center,center)
+			@include flex-layout(center, center)
 		}
 
 		.total-money {
