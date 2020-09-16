@@ -1,5 +1,10 @@
 <template>
 	<view class="my">
+		<un-navigation>
+			<text>我的</text>
+		</un-navigation>
+		
+		 
 		<view class="author">
 			<view class="author-picture"></view>
 
@@ -36,6 +41,7 @@
 
 <script>
 	import shoppingItems from "./shopping-items.vue";
+	import unNavigation from "../../components/navigation.vue";
 	export default {
 		data() {
 			return {
@@ -117,7 +123,8 @@
 			};
 		},
 		components: {
-			shoppingItems
+			shoppingItems,
+			unNavigation,
 		}
 	}
 </script>
