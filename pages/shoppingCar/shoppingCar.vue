@@ -1,6 +1,8 @@
 <template>
 	<view class="shopping-car">
+		<!-- 当购物车为空的时候显示 -->
 		<clearCar v-if="commodity.length === 0" />
+		<!-- 商品渲染 -->
 		<commodity v-else v-for="item in commodity" :key="item.name + item.storeName" :items.sync="item" :allData="commodity"
 		 @editCommodity="editCommodity" ref="test" />
 		<!-- 底下结算合计 -->
@@ -61,11 +63,11 @@
 		methods: {
 			editCommodity(datas) {
 				var editIndex = this.commodity.findIndex((item) => item.storeName === datas.storeName)
-				this.$set(this.commodity, editIndex, datas)
+				this.$set(this.commodity, editIndex, datas);
 			},
 			allSelectToggle() {
 				this.allSelect = !this.allSelect;
-				this.$refs.test.forEach(item => item.$emit("allSelect", this.allSelect))
+				this.$refs.test.forEach(item => item.$emit("allSelect", this.allSelect));
 			},
 		},
 		computed: {

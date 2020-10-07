@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<image v-if="_props.item.icon" :src="_props.item.icon">		</image>
+		<image v-if="_props.item.icon" :src="_props.item.icon"></image>
 		<text>{{_props.item.count}}</text>
 		<text>{{_props.item.text}}</text>
 	</view>
@@ -10,7 +10,7 @@
 	export default {
 		props: ["item"],
 		mounted() {
-			console.log(this._props.item)
+			// console.log(this._props.item)
 		}
 	}
 </script>
