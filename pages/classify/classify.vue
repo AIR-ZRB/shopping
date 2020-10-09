@@ -6,7 +6,8 @@
 
 		<view class="classify-content">
 			<view class="left-menu">
-				<view class="list" v-for="item in classify" :key="item.name" @click="toggle(item)">
+				<view v-for="item in classify" :key="item.name" :class="['list',item.active === true ? 'active': '']" @click="toggle(item)"
+				 :data-active="item.active" v-focus>
 					{{item.name}}
 				</view>
 			</view>
@@ -30,6 +31,7 @@
 				selectNow: [],
 				classify: [{
 					name: "热门推荐",
+					active: true,
 					children: [{
 							name: "空调",
 							image: "//img11.360buyimg.com/focus/s140x140_jfs/t1/117080/5/10502/18158/5ef0103eE416ae569/898a7ac882ba6c63.jpg"
@@ -57,6 +59,7 @@
 					]
 				}, {
 					name: "手机数码",
+					active: false,
 					children: [{
 						name: "小米",
 						image: "//img30.360buyimg.com/focus/s140x140_jfs/t13411/188/926813276/3945/a4f47292/5a1692eeN105a64b4.png"
@@ -85,14 +88,24 @@
 		methods: {
 			toggle(item) {
 				this.selectNow = item;
+				this.classify.forEach((item) => item.active = false);
+				this.selectNow.active = true;
 			},
+		},
+		directives: {
+			focus: {
+				// 指令的定义
+				bind(el) {
+					if (el.dataset.active) el.click();
+				}
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
 	.classify-content {
-		@include flex-layout(flex-start, none,no-wrap)
+		@include flex-layout(flex-start, none, no-wrap)
 	}
 
 	.left-menu {
