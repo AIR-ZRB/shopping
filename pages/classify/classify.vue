@@ -7,7 +7,7 @@
 		<view class="classify-content">
 			<view class="left-menu">
 				<view v-for="item in classify" :key="item.name" :class="['list',item.active === true ? 'active': '']" @click="toggle(item)"
-				 :data-active="item.active" v-focus>
+				 :data-active="item.active" v-select	>
 					{{item.name}}
 				</view>
 			</view>
@@ -79,7 +79,53 @@
 						name: "OPPO",
 						image: "//img13.360buyimg.com/focus/s140x140_jfs/t13036/273/932026474/2570/a3517c7d/5a169254N4bbbd9fb.png"
 					}, ]
-				}]
+				},
+				{
+					name: "电脑办公",
+					active: false,
+					children: []
+				},{
+					name: "家用电器",
+					active: false,
+					children: []
+				},{
+					name: "美妆护肤",
+					active: false,
+					children: []
+				},{
+					name: "个护清洁",
+					active: false,
+					children: []
+				},{
+					name: "汽车生活",
+					active: false,
+					children: []
+				},{
+					name: "男装",
+					active: false,
+					children: []
+				},{
+					name: "男鞋",
+					active: false,
+					children: []
+				},{
+					name: "女装",
+					active: false,
+					children: []
+				},{
+					name: "女鞋",
+					active: false,
+					children: []
+				},{
+					name: "图书音像",
+					active: false,
+					children: []
+				},{
+					name: "户外运动",
+					active: false,
+					children: []
+				},
+				]
 			}
 		},
 		components: {
@@ -93,7 +139,7 @@
 			},
 		},
 		directives: {
-			focus: {
+			select	: {
 				// 指令的定义
 				bind(el) {
 					if (el.dataset.active) el.click();
