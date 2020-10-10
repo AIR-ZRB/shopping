@@ -24,8 +24,8 @@
 
 <style lang="scss" scoped>
 	.radio {
-		width: 24px;
-		height: 24px;
+		width: 22px;
+		height: 22px;
 		font-size: 0;
 		float: left;
 		overflow: hidden;

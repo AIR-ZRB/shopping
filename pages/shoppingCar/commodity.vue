@@ -67,8 +67,8 @@
 				this.datas.children[index].check = !this.datas.children[index].check;
 				const flag = this.datas.children.every(item => item.check === true);
 				const flags = this.datas.children.some(item => item.check === false);
-				
-				
+
+
 				flag && this.radioChange();
 				if (flags === true) {
 					if (this.storeSelect === true) this.storeSelect = false;
@@ -99,63 +99,52 @@
 
 <style lang="scss">
 	.commodity {
-		padding: 20px;
+		padding: 20px 10px;
 		background: white;
 		border-radius: 5px;
 		margin-bottom: 20px;
 
 		.store-name {
-			font-size: 20px;
+			@include font-size(28rpx, 18px);
 			font-weight: 700;
 			margin-bottom: 20px;
 		}
 
 		.detail-message {
 			@include flex-layout(flex-start);
-			padding-bottom: 20px;
+			padding-bottom: 50px;
 
 			.radio {
 				@include flex-layout(center, center);
 				float: left;
 				position: absolute;
 
-
 				.image {
-					width: 135rpx;
-					height: 135rpx;
 					background-color: red;
-					margin: 0 0 0 10px;
+					@include box-size(200rpx, 200rpx, 144px, 144px);
 				}
 			}
-
-
 
 			// 商品详细信息
 			.commodity-description {
 				box-sizing: border-box;
 				overflow: hidden;
-				margin-left: 220rpx;
 
 				width: 100%;
 				position: relative;
-
-
+				@include margin-left-size(300rpx, 220px);
 
 				.name {
 					display: block;
-					// font-size: 18px;
-					font-size: 30rpx;
+					@include font-size(22rpx, 18px);
 				}
 
 				.select {
-					// font-size: 14px;
 					display: inline-block;
-					font-size: 28rpx;
-					$select-height: 24px;
-					height: $select-height;
-					border-radius: $select-height / 2;
+					@include font-size(24rpx, 14px);
+					border-radius: 10px;
 					background-color: #F2F2F2;
-					padding: 0 4px;
+					padding: 1px 10px;
 					margin: 10px 0;
 				}
 
@@ -163,8 +152,7 @@
 					@include flex-layout(space-between, center);
 
 					.price {
-						// font-size: 18px;
-						font-size: 32rpx;
+						@include font-size(32rpx, 20px);
 						font-weight: 700;
 						color: $theme-color;
 					}
@@ -174,21 +162,19 @@
 
 						text {
 							display: block;
-							// width: 20px;
+
 
 							&:first-child,
 							&:last-child {
-								// font-size: 24px;
-								font-size: 32rpx;
+
+								@include font-size(32rpx, 14px);
 								font-weight: 700;
-								// text-
 							}
 
 							&:nth-child(2) {
-								// // text-align: center;
-								// @include flex-layout(center, center);
-								font-size: 32rpx;
-								// height: 100%;
+
+								@include font-size(32rpx, 14px);
+								font-weight: 700;
 								padding: 0 10px;
 								margin: 0 5px;
 								background: #f2f2f2;
@@ -202,8 +188,10 @@
 				.commodity-ctrl {
 					font-size: 12px;
 					margin-top: 10px;
+					@include flex-layout(flex-end);
 
-					@include flex-layout(flex-end) text {
+					text {
+						font-size: 12px;
 						margin-left: 5px;
 					}
 				}

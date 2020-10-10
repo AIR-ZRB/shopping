@@ -89,3 +89,38 @@ $theme-color: #C82519;
 	align-items: $y;
 	flex-wrap: $wrap;
 }
+
+@mixin ipad-query {
+	@media screen and (min-width: 768px) {
+		// 相当于插槽
+		@content;
+	}
+}
+
+@mixin font-size($rpx,$max) {
+	font-size: $rpx;
+	@include ipad-query {
+		& {
+			font-size: $max;
+		}
+	}
+}
+
+@mixin box-size($width,$height,$maxWidth,$maxHeight){
+	width: $width;
+	height: $height;
+	@include ipad-query {
+		& {
+			width: $maxWidth;
+			height: $maxHeight;
+		}
+	}
+}
+@mixin margin-left-size($width,$maxWidth){
+	margin-left: $width;
+	@include ipad-query {
+		& {
+			margin-left: $maxWidth;
+		}
+	}
+}

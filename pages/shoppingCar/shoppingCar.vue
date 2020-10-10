@@ -108,7 +108,6 @@
 		width: 100%;
 		height: 50px;
 		background: rgba(255, 255, 255, .8);
-		// background: red;
 		position: fixed;
 		bottom: 50px;
 		left: 0;
