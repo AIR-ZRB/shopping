@@ -122,6 +122,7 @@
 				.image {
 					background-color: red;
 					@include box-size(200rpx, 200rpx, 144px, 144px);
+					border-radius: 5px;
 				}
 			}
 
@@ -132,10 +133,11 @@
 
 				width: 100%;
 				position: relative;
-				@include margin-left-size(300rpx, 220px);
+				@include margin-left-size(300rpx, 210px);
 
 				.name {
 					display: block;
+					padding: 5px 0 0 0;
 					@include font-size(22rpx, 18px);
 				}
 
