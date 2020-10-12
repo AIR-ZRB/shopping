@@ -116,6 +116,18 @@ $theme-color: #C82519;
 		}
 	}
 }
+@mixin square-size($width,$maxWidth){
+	width: $width;
+	height: $width;
+	@include ipad-query {
+		& {
+			width: $maxWidth;
+			height: $maxWidth;
+		}
+	}
+}
+
+
 @mixin margin-left-size($width,$maxWidth){
 	margin-left: $width;
 	@include ipad-query {

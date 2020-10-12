@@ -21,7 +21,8 @@
 	box-sizing: border-box;
 	width: 100%;
 	height: 45px;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #F6F6F6;
+	background: #fff;
 	padding: 0 10px;
 	@include flex-layout(space-between,center);
 	font-size: 18px;

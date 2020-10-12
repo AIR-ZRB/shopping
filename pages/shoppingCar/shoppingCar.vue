@@ -1,5 +1,8 @@
 <template>
 	<view class="shopping-car">
+		<unNavigation>
+			<text>购物车</text>
+		</unNavigation>
 		<!-- 当购物车为空的时候显示 -->
 		<clearCar v-if="commodity.length === 0" />
 		<!-- 商品渲染 -->
@@ -23,6 +26,7 @@
 	import clearCar from "./clearCar.vue";
 	import commodity from "./commodity.vue";
 	import unRadio from "../../components/radio.vue";
+	import unNavigation from "../../components/navigation.vue";
 	export default {
 		data() {
 			return {
@@ -94,7 +98,8 @@
 		components: {
 			clearCar,
 			commodity,
-			unRadio
+			unRadio,
+			unNavigation
 		}
 	}
 </script>

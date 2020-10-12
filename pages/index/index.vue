@@ -21,18 +21,32 @@
 		</view>
 
 		<view class="second-skill">
-			<text>京东秒杀 10点场</text>
+			<text class="kill-time">
+				京东秒杀
+				<text class="time">
+					<text class="tiem-bucket">
+						10点场
+					</text>
+					<text class="count-down">
+						{{countDown}}
+					</text>
+				</text>
+			</text>
+			<view class="kill-commodity">
+				<view v-for="item in secondsKill" :key="item.coommodityId">
+					<image :src="item.image"></image>
+					<text>￥{{item.afterPrice}}</text>
+					<text>￥{{item.beforePrice}}</text>
+				</view>
+			</view>
+
+
 		</view>
 
 		<view class="new-member">
 			<image src="../../static/images/new-member-welfare1.jpg"></image>
 			<image src="../../static/images/new-member-welfare2.jpg"></image>
 		</view>
-
-
-
-
-
 
 
 	</view>
@@ -42,8 +56,48 @@
 	export default {
 		data() {
 			return {
+				countDown: "00:00:00",
 				searchValue: "",
 				banner: ["banner1.jpg", "banner2.jpg", "banner3.jpg", "banner4.jpg"],
+				secondsKill: [{
+						coommodityId: 1,
+						beforePrice: 299,
+						afterPrice: 248,
+						image: "https://wqimg.jd.com/imgproxy/n7/s150x150_jfs/t1/126478/6/13805/50136/5f71b27bEdcf24eff/021581a888ca8f11.jpg.dpg"
+					},
+					{
+						coommodityId: 2,
+						beforePrice: 3200,
+						afterPrice: 2499,
+						image: "https://wqimg.jd.com/imgproxy/n7/s150x150_jfs/t1/150266/7/10300/144621/5f7fc501E00a498e2/367895e25cbd4a38.jpg.dpg"
+					},
+					{
+						coommodityId: 3,
+						beforePrice: 9288,
+						afterPrice: 7000,
+						image: "https://wqimg.jd.com/imgproxy/n7/s150x150_jfs/t1/148119/13/10361/191808/5f817c2aE7c81e395/4c5d33239f6db5c8.jpg.dpg"
+					},
+					{
+						coommodityId: 4,
+						beforePrice: 354,
+						afterPrice: 318,
+						image: "https://wqimg.jd.com/imgproxy/n7/s150x150_jfs/t1/130148/35/12007/66224/5f80259cEa8831e42/4b20c7d4b3f411cc.jpg.dpg"
+					},
+					{
+						coommodityId: 5,
+						beforePrice: 600,
+						afterPrice: 411,
+						image: "https://wqimg.jd.com/imgproxy/n7/s150x150_jfs/t1/136008/23/11139/101039/5f7430adE46006433/83a955f70cedbc88.jpg.dpg"
+					},
+					{
+						coommodityId: 6,
+						beforePrice: 128,
+						afterPrice: 88,
+						image: "https://wqimg.jd.com/imgproxy/n7/s150x150_jfs/t1/129089/13/14337/127308/5f7fdcb1Eb135e164/3924fd40c72e677d.jpg.dpg"
+
+					},
+
+				],
 				classify: [{
 						title: "京东超市",
 						icon: "//m.360buyimg.com/mobilecms/s120x120_jfs/t1/125678/35/5947/4868/5efbf28cEbf04a25a/e2bcc411170524f0.png"
@@ -88,11 +142,31 @@
 				]
 			}
 		},
-		onLoad() {
-
-		},
 		methods: {
+			countDownTime() {
+				// let nowTime = +new Date();
+				// let endTime = +new Date("2020,10,12 12:0:0");
+				setInterval(() => {
+					let nowTime = +new Date();
+					let endTime = +new Date("2020,10,12 12:0:0");
+					let remainTime = parseInt((endTime - nowTime) / 1000);
+					let hours = parseInt(remainTime / 3600 % 24);
+					let minute = parseInt(remainTime / 60 % 60);
+					let seconds = remainTime % 60
+					
+					// hours.padStart(2,"0")
+					
+					
+					// console.log(remainTime / 3600 % 24)
+					// console.log(remainTime / 60 % 60)
+					// console.log(remainTime % 60)
+					this.countDown = `${hours}:${minute}:${seconds}`
 
+				}, 1000)
+			}
+		},
+		created() {
+			this.countDownTime()
 		}
 	}
 </script>
@@ -142,7 +216,7 @@
 
 	.classify {
 		width: 100%;
-		
+
 
 
 		.classify-item {
@@ -152,27 +226,86 @@
 			font-size: 14px;
 			margin-top: 10px;
 
-			@include flex-layout(center,flex-end);
+			@include flex-layout(center, flex-end);
 
 			image {
 				width: 46px;
 				height: 46px;
 				margin-bottom: 5px;
 			}
-			
+
 			text {
 				width: 100%;
 				text-align: center;
 			}
-			
+
 		}
 	}
 
 	.second-skill {
 		margin-top: 30rpx;
 		width: 100%;
-		height: 300rpx;
-		background-color: gray;
+		height: 320rpx;
+		overflow-x: scroll;
+
+
+		.kill-time {
+			display: block;
+			line-height: 33px;
+			padding: 5px 10px;
+			font-size: 14px;
+
+			.time {
+				font-size: 12px;
+				margin-left: 10px;
+				border: 1px solid $theme-color;
+				color: #fff;
+				border-radius: 12px;
+				padding: 0 10px 0 0;
+				font-weight: 700;
+				.tiem-bucket {
+					font-size: 12px;
+					background: $theme-color;
+					border-radius: 12px;
+					padding: 0 6px;
+				}
+
+				.count-down {
+					font-size: 12px;
+					color: $theme-color;
+					padding: 0 10px;
+				}
+			}
+		}
+
+		.kill-commodity {
+			width: 120%;
+
+			@include flex-layout(space-between, center);
+
+			view {
+				padding: 0 5px;
+
+				image {
+					@include square-size(120rpx, 144px);
+					margin-bottom: 10px;
+				}
+
+				text {
+					display: block;
+					text-align: center;
+					font-size: 12px;
+					font-weight: 700;
+					color: $theme-color;
+
+					&:last-child {
+						color: #999;
+						text-decoration: line-through;
+					}
+				}
+			}
+		}
+
 	}
 
 	.new-member {

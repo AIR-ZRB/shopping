@@ -6,12 +6,13 @@
 
 		<view class="classify-content">
 			<view class="left-menu">
-				<view v-for="item in classify" :key="item.name" :class="['list',item.active === true ? 'active': '']" @click="toggle(item)"
-				 :data-active="item.active" v-select>
+				<view v-for="(item,index) in classify" :key="item.name" :class="['list',item.active === true ? 'active': '']"
+				 @click="toggle(index)" :data-active="item.active" v-select>
 					{{item.name}}
 				</view>
 			</view>
 			<view class="right-details">
+				<text v-if="selectNow.length != 0" class="classify-title">{{selectNow.name}}</text>
 				<view class="list" v-for="item in selectNow.children" :key="item.name">
 					<image :src="item.image"></image>
 					<text>{{item.name}}</text>
@@ -125,6 +126,31 @@
 						active: false,
 						children: []
 					},
+					{
+						name: "内衣配饰",
+						active: false,
+						children: []
+					},
+					{
+						name: "食品生鲜",
+						active: false,
+						children: []
+					},
+					{
+						name: "酒水饮料",
+						active: false,
+						children: []
+					},
+					{
+						name: "家居家装",
+						active: false,
+						children: []
+					},
+					{
+						name: "家具厨具",
+						active: false,
+						children: []
+					},
 				]
 			}
 		},
@@ -132,10 +158,10 @@
 			unNavigation
 		},
 		methods: {
-			toggle(item) {
-				this.selectNow = item;
+			toggle(index) {
 				this.classify.forEach((item) => item.active = false);
-				this.selectNow.active = true;
+				this.classify[index].active = true;
+				this.selectNow = this.classify[index];
 			},
 		},
 		directives: {
@@ -156,7 +182,7 @@
 
 	.left-menu {
 		width: 85px;
-		heigh: 100%;
+		heigh: 100%;	
 
 		.list {
 			height: 46px;
@@ -168,6 +194,7 @@
 
 		view.active {
 			background: #ffffff;
+			color: $theme-color;
 		}
 	}
 
@@ -176,6 +203,14 @@
 		top: 0;
 		padding-left: 85px;
 		width: 80%;
+
+		.classify-title {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			font-weight: 700;
+			font-size: 14px;
+		}
 
 		.list {
 			width: 33.3%;
