@@ -25,7 +25,7 @@
 				京东秒杀
 				<text class="time">
 					<text class="tiem-bucket">
-						10点场
+						{{nowSession}}点场
 					</text>
 					<text class="count-down">
 						{{countDown}}
@@ -57,6 +57,7 @@
 		data() {
 			return {
 				countDown: "00:00:00",
+				nowSession: "",
 				searchValue: "",
 				banner: ["banner1.jpg", "banner2.jpg", "banner3.jpg", "banner4.jpg"],
 				secondsKill: [{
@@ -147,19 +148,29 @@
 				// let nowTime = +new Date();
 				// let endTime = +new Date("2020,10,12 12:0:0");
 				setInterval(() => {
+					// 获取偶数场次
+					let session = new Date().getHours();
+					(session + 2) % 2 === 0 ? session += 2 : session += 1;
+					this.nowSession = session;
+
+
+					let year = new Date().getFullYear();
+					let month = new Date().getMonth() + 1;
+					let today = new Date().getDate();
+
+
+					// 获取倒计时
 					let nowTime = +new Date();
-					let endTime = +new Date("2020,10,12 12:0:0");
+					let endTime = +new Date(`${year},${month},${today} ${session}:0:0`);
 					let remainTime = parseInt((endTime - nowTime) / 1000);
 					let hours = parseInt(remainTime / 3600 % 24);
 					let minute = parseInt(remainTime / 60 % 60);
 					let seconds = remainTime % 60
-					
-					// hours.padStart(2,"0")
-					
-					
-					// console.log(remainTime / 3600 % 24)
-					// console.log(remainTime / 60 % 60)
-					// console.log(remainTime % 60)
+
+
+
+
+
 					this.countDown = `${hours}:${minute}:${seconds}`
 
 				}, 1000)
@@ -263,6 +274,7 @@
 				border-radius: 12px;
 				padding: 0 10px 0 0;
 				font-weight: 700;
+
 				.tiem-bucket {
 					font-size: 12px;
 					background: $theme-color;
