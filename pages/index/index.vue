@@ -2,7 +2,7 @@
 	<view class="content">
 
 		<view class="search">
-			<text>Menu</text>
+			<text><image src="../../static/icon/menu.png" mode=""></image></text>
 			<input type="text" :value="searchValue">
 			<text>登录</text>
 		</view>
@@ -44,8 +44,9 @@
 		</view>
 
 		<view class="new-member">
-			<image src="../../static/images/new-member-welfare1.jpg"></image>
-			<image src="../../static/images/new-member-welfare2.jpg"></image>
+			<image src="//m.360buyimg.com/mobilecms/s376x240_jfs/t1/49601/16/12206/115887/5d91b4d5E34709952/aba2bcb4855e6e52.png!q70.jpg.dpg"></image>
+			<image src="//m.360buyimg.com/mobilecms/s376x240_jfs/t1/32449/33/15631/174497/5cc2d86bE0289110c/9c53e25651659d43.png!q70.jpg.dpg"></image>
+			<image src="//m.360buyimg.com/mobilecms/s750x100_jfs/t1/111655/4/10853/142323/5ef22455Eb86abfc1/2bf122bb2e87d6e3.png.webp"></image>
 		</view>
 
 
@@ -145,8 +146,6 @@
 		},
 		methods: {
 			countDownTime() {
-				// let nowTime = +new Date();
-				// let endTime = +new Date("2020,10,12 12:0:0");
 				setInterval(() => {
 					// 获取偶数场次
 					let session = new Date().getHours();
@@ -167,12 +166,7 @@
 					let minute = parseInt(remainTime / 60 % 60);
 					let seconds = remainTime % 60
 
-
-
-
-
 					this.countDown = `${hours}:${minute}:${seconds}`
-
 				}, 1000)
 			}
 		},
@@ -193,13 +187,13 @@
 	.search {
 		height: 50px;
 		width: 100%;
-		background: #C82519;
+		background: $theme-color;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
 
 		text {
-			font-size: 16px;
+			font-size: 14px;
 			color: white;
 		}
 
@@ -208,10 +202,14 @@
 			width: 60%;
 			height: $input-height;
 			background-color: white;
-			padding: 0 10px;
+			padding: 0 14px;
 			font-size: 14px;
 			border-radius: $input-height / 2;
 			border: none;
+		}
+		image {
+			width: 24px;
+			height: 24px;
 		}
 	}
 
@@ -235,19 +233,19 @@
 			height: 70px;
 			float: left;
 			font-size: 14px;
-			margin-top: 10px;
+			margin-top: 20rpx;
 
 			@include flex-layout(center, flex-end);
 
 			image {
-				width: 46px;
-				height: 46px;
-				margin-bottom: 5px;
+				@include square-size(80rpx, 58px);
+				margin-bottom: 10rpx;
 			}
 
 			text {
 				width: 100%;
 				text-align: center;
+				font-size: 12px;
 			}
 
 		}
@@ -292,7 +290,6 @@
 
 		.kill-commodity {
 			width: 120%;
-
 			@include flex-layout(space-between, center);
 
 			view {
@@ -327,6 +324,13 @@
 		image {
 			width: 50%;
 			height: 200rpx;
+			@include box-size(50%, 210rpx, 50%, 178px);
+
+			&:last-child {
+				width: 100%;
+				height: 50px;
+				margin-top: 10px;
+			}
 		}
 	}
 </style>
