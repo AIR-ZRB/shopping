@@ -2,9 +2,11 @@
 	<view class="content">
 
 		<view class="search">
-			<text><image src="../../static/icon/menu.png" mode=""></image></text>
+			<text>
+				<image src="../../static/icon/menu.png" mode=""></image>
+			</text>
 			<input type="text" :value="searchValue">
-			<text>登录</text>
+			<navigator url="pages/login/login" open-type="navigate">登录</navigator>
 		</view>
 
 		<swiper class="banners" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
@@ -192,7 +194,7 @@
 		justify-content: space-around;
 		align-items: center;
 
-		text {
+		navigator {
 			font-size: 14px;
 			color: white;
 		}
@@ -207,6 +209,7 @@
 			border-radius: $input-height / 2;
 			border: none;
 		}
+
 		image {
 			width: 24px;
 			height: 24px;
