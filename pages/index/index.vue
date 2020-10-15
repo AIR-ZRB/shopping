@@ -2,11 +2,9 @@
 	<view class="content">
 
 		<view class="search">
-			<text>
-				<image src="../../static/icon/menu.png" mode=""></image>
-			</text>
+			<image src="../../static/icon/menu.png" mode=""></image>
 			<input type="text" :value="searchValue">
-			<navigator url="pages/login/login" open-type="navigate">登录</navigator>
+			<navigator url="/pages/login/login" open-type="navigate">登录</navigator>
 		</view>
 
 		<swiper class="banners" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
@@ -51,6 +49,9 @@
 			<image src="//m.360buyimg.com/mobilecms/s750x100_jfs/t1/111655/4/10853/142323/5ef22455Eb86abfc1/2bf122bb2e87d6e3.png.webp"></image>
 		</view>
 
+		<view class="recommend">
+			<image src="//img11.360buyimg.com/jdphoto/jfs/t1/31601/22/15554/14040/5cc2a86fEbdb1098b/88174b36f85283b6.png"></image>
+		</view>
 
 	</view>
 </template>
@@ -180,19 +181,21 @@
 
 <style lang="scss">
 	.content {
-		display: flex;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+		@include flex-layout(center, center);
+		position: relative;
+		padding: 50px 0;
 	}
 
+	// 搜索框
 	.search {
 		height: 50px;
 		width: 100%;
 		background: $theme-color;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
+		position: fixed;
+		z-index: 2;
+		top: 0;
+		@include flex-layout(space-around, center);
 
 		navigator {
 			font-size: 14px;
@@ -216,6 +219,7 @@
 		}
 	}
 
+	// banner
 	.banners {
 		height: 300rpx;
 		width: 100%;
@@ -226,10 +230,9 @@
 		}
 	}
 
+	// 分类
 	.classify {
 		width: 100%;
-
-
 
 		.classify-item {
 			width: 20%;
@@ -254,12 +257,12 @@
 		}
 	}
 
+	// 显示秒杀
 	.second-skill {
 		margin-top: 30rpx;
 		width: 100%;
 		height: 320rpx;
 		overflow-x: scroll;
-
 
 		.kill-time {
 			display: block;
@@ -320,6 +323,7 @@
 
 	}
 
+	// 新人福利
 	.new-member {
 		margin-top: 30rpx;
 		width: 100%;
@@ -334,6 +338,17 @@
 				height: 50px;
 				margin-top: 10px;
 			}
+		}
+	}
+
+	.recommend {
+		margin-top: 30px;
+
+		image {
+			height: 40px;
+			width: 400px;
+			// width: 100%;
+			// height: 50px;
 		}
 	}
 </style>

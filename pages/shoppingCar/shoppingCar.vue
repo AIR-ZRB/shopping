@@ -59,6 +59,13 @@
 							select: "标准普通版",
 							check: false,
 							count: "1",
+						},{
+							name: "小米手表Color",
+							picture: "",
+							price: "799",
+							select: "标准普通版",
+							check: false,
+							count: "1",
 						}],
 					},
 				]
@@ -107,6 +114,7 @@
 <style lang="scss">
 	.shopping-car {
 		background-color: #fafafa;
+		padding: 0 0 50px 0;
 	}
 
 	.total {

@@ -1,6 +1,6 @@
 <template>
 	<view class="navigation">
-		<image src="../static/icon/left-arrow.png"></image>
+		<image src="../static/icon/left-arrow.png" @click="goBack"></image>
 		<slot></slot>
 		<image src="../static/icon/else.png"></image>
 	</view>
@@ -12,6 +12,11 @@
 			return {
 				
 			};
+		},
+		methods:{
+			goBack(){
+				window.history.back();
+			}
 		}
 	}
 </script>
