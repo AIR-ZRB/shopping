@@ -6,12 +6,14 @@
 		
 		 
 		<view class="author">
-			<view class="author-picture"></view>
+			<view class="author-picture">
+				{{authorName}}
+			</view>
 
 			<view class="user-message">
 				<text class="username">青空</text>
-				<text>青享值：111</text>
-				<text>小白信用：111</text>
+				<text>青享值：1221</text>
+				<text>小白信用：1331</text>
 			</view>
 
 			<view class="commodity-status">
@@ -45,6 +47,7 @@
 	export default {
 		data() {
 			return {
+				username: "青空",
 				commodityStatus: [{
 						text: "商品收藏",
 						count: 1
@@ -122,6 +125,11 @@
 				]
 			};
 		},
+		computed: {
+			authorName(){
+				return this.username.slice(0,1)
+			}
+		},
 		components: {
 			shoppingItems,
 			unNavigation,
@@ -140,20 +148,28 @@
 		.author-picture {
 			width: 60px;
 			height: 60px;
+			line-height: 60px;
 			border-radius: 50%;
-			background-color: skyblue;
+			// background-color: red;
+			border: 2px solid #000;
+			text-align: center;
+			font-size: 30px;
+			
 		}
 
 		.user-message {
 			width: 80%;
 			margin-left: 20rpx;
-			font-size: 14px;
+			font-size: 12px;
 
 			.username {
 				width: 100%;
 				display: block;
 				font-size: 20px;
-
+			}
+			text {
+				font-size: 26rpx;
+				margin-right: 10px;
 			}
 		}
 
