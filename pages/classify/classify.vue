@@ -11,8 +11,8 @@
 					{{item.name}}
 				</view>
 			</view>
-			<view class="right-details">
-				<text v-if="selectNow.length != 0" class="classify-title">{{selectNow.name}}</text>
+			<view class="right-details" v-if="selectNow.length != 0">
+				<text class="classify-title">{{selectNow.name}}</text>
 				<view class="list" v-for="item in selectNow.children" :key="item.name">
 					<image :src="item.image"></image>
 					<text>{{item.name}}</text>
@@ -162,6 +162,7 @@
 				this.classify.forEach((item) => item.active = false);
 				this.classify[index].active = true;
 				this.selectNow = this.classify[index];
+				this.$forceUpdate();
 			},
 		},
 		directives: {
@@ -178,11 +179,13 @@
 <style lang="scss">
 	.classify-content {
 		position: relative;
+		padding-top: 50px;
+		
 	}
 
 	.left-menu {
 		width: 85px;
-		heigh: 100%;	
+		height: 100%;
 
 		.list {
 			height: 46px;
@@ -200,7 +203,7 @@
 
 	.right-details {
 		position: absolute;
-		top: 0;
+		top: 50px;
 		padding-left: 85px;
 		width: 80%;
 

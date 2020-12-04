@@ -168,7 +168,7 @@
 				font-size: 20px;
 			}
 			text {
-				font-size: 26rpx;
+				font-size: 14px;
 				margin-right: 10px;
 			}
 		}

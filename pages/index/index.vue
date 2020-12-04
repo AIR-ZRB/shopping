@@ -32,13 +32,16 @@
 					</text>
 				</text>
 			</text>
-			<view class="kill-commodity">
-				<view v-for="item in secondsKill" :key="item.coommodityId">
-					<image :src="item.image"></image>
-					<text>￥{{item.afterPrice}}</text>
-					<text>￥{{item.beforePrice}}</text>
+			<view class="kill-commodity-box">
+				<view class="kill-commodity">
+					<view v-for="item in secondsKill" :key="item.coommodityId">
+						<image :src="item.image"></image>
+						<text>￥{{item.afterPrice}}</text>
+						<text>￥{{item.beforePrice}}</text>
+					</view>
 				</view>
 			</view>
+
 
 
 		</view>
@@ -262,7 +265,7 @@
 		margin-top: 30rpx;
 		width: 100%;
 		height: 320rpx;
-		overflow-x: scroll;
+		position: relative;
 
 		.kill-time {
 			display: block;
@@ -294,32 +297,40 @@
 			}
 		}
 
-		.kill-commodity {
-			width: 120%;
-			@include flex-layout(space-between, center);
+		.kill-commodity-box {
+			width: 100%;
+			overflow-x: scroll;
+			padding-bottom: 10px;
 
-			view {
-				padding: 0 5px;
+			.kill-commodity {
+				width: 120%;
+				@include flex-layout(space-between, center);
 
-				image {
-					@include square-size(120rpx, 144px);
-					margin-bottom: 10px;
-				}
+				view {
+					padding: 0 5px;
 
-				text {
-					display: block;
-					text-align: center;
-					font-size: 12px;
-					font-weight: 700;
-					color: $theme-color;
+					image {
+						@include square-size(120rpx, 144px);
+						margin-bottom: 10px;
+					}
 
-					&:last-child {
-						color: #999;
-						text-decoration: line-through;
+					text {
+						display: block;
+						text-align: center;
+						font-size: 12px;
+						font-weight: 700;
+						color: $theme-color;
+
+						&:last-child {
+							color: #999;
+							text-decoration: line-through;
+						}
 					}
 				}
 			}
 		}
+
+
 
 	}
 
