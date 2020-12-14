@@ -56,10 +56,13 @@
 			<image src="//img11.360buyimg.com/jdphoto/jfs/t1/31601/22/15554/14040/5cc2a86fEbdb1098b/88174b36f85283b6.png"></image>
 		</view>
 
+		<recommendCommodity />
+
 	</view>
 </template>
 
 <script>
+	import recommendCommodity from "@/components/recommendCommodity.vue"
 	export default {
 		data() {
 			return {
@@ -150,6 +153,10 @@
 				]
 			}
 		},
+
+		components: {
+			recommendCommodity
+		},
 		methods: {
 			countDownTime() {
 				setInterval(() => {
@@ -188,6 +195,7 @@
 		@include flex-layout(center, center);
 		position: relative;
 		padding: 50px 0;
+		
 	}
 
 	// 搜索框

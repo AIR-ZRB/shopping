@@ -142,18 +142,19 @@
 		@include flex-layout(none, center);
 		flex-wrap: wrap;
 		padding: 10px;
+		padding-top:60px;
 		background: #FE2745;
 		color: #ffffff;
 
 		.author-picture {
-			width: 60px;
-			height: 60px;
-			line-height: 60px;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
 			border-radius: 50%;
 			// background-color: red;
 			border: 2px solid #000;
 			text-align: center;
-			font-size: 30px;
+			font-size: 28px;
 			
 		}
 
