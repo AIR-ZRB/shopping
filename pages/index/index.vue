@@ -52,10 +52,6 @@
 			<image src="//m.360buyimg.com/mobilecms/s750x100_jfs/t1/111655/4/10853/142323/5ef22455Eb86abfc1/2bf122bb2e87d6e3.png.webp"></image>
 		</view>
 
-		<view class="recommend">
-			<image src="//img11.360buyimg.com/jdphoto/jfs/t1/31601/22/15554/14040/5cc2a86fEbdb1098b/88174b36f85283b6.png"></image>
-		</view>
-
 		<recommendCommodity />
 
 	</view>
@@ -360,14 +356,5 @@
 		}
 	}
 
-	.recommend {
-		margin-top: 30px;
-
-		image {
-			height: 40px;
-			width: 400px;
-			// width: 100%;
-			// height: 50px;
-		}
-	}
+	
 </style>
