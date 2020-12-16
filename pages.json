@@ -43,12 +43,18 @@
 					"titleNView": false
 				}
 			}
+		}, {
+			"path": "components/recommendCommodity",
+			"style": {}
+		}, {
+			"path": "pages/product/product",
+			"style": {
+				"app-plus": {
+					"titleNView": false
+				}
+			}
 		}
-	    ,{
-            "path" : "components/recommendCommodity",
-            "style" : {}
-        }
-    ],
+	],
 	"tabBar": {
 		"color": "#7A7E83",
 		"selectedColor": "#3cc51f",
