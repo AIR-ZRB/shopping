@@ -8,6 +8,8 @@
 		<!-- 商品渲染 -->
 		<commodity v-else v-for="item in commodity" :key="item.name + item.storeName" :items.sync="item" :allData="commodity"
 		 @editCommodity="editCommodity" ref="test" />
+
+		<recommendCommodity />
 		<!-- 底下结算合计 -->
 		<view class="total">
 			<view class="all-select">
@@ -27,6 +29,7 @@
 	import commodity from "./commodity.vue";
 	import unRadio from "../../components/radio.vue";
 	import unNavigation from "../../components/navigation.vue";
+	import recommendCommodity from "../../components/recommendCommodity.vue"
 	export default {
 		data() {
 			return {
@@ -59,7 +62,7 @@
 							select: "标准普通版",
 							check: false,
 							count: "1",
-						},{
+						}, {
 							name: "小米手表Color",
 							picture: "",
 							price: "799",
@@ -106,7 +109,8 @@
 			clearCar,
 			commodity,
 			unRadio,
-			unNavigation
+			unNavigation,
+			recommendCommodity
 		}
 	}
 </script>
