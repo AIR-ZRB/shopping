@@ -1,5 +1,10 @@
 <template>
 	<view class="product">
+
+		<navigator url="/" open-type="navigate">
+			<view class="product-ctrl">
+			</view>
+		</navigator>
 		<view class="product-image">
 			<image :src="product.image"></image>
 		</view>
@@ -47,6 +52,10 @@
 		},
 		methods: {
 
+		},
+		created(){
+			console.log(this.$route.query)
+			console.log()
 		}
 	}
 </script>
@@ -56,6 +65,33 @@
 		background: #F2F2F2;
 		height: 100%;
 	}
+
+	navigator {
+		// width: 100%;
+		padding: 10px;
+		// @include flex-layout(space-between);
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 2;
+	}
+
+	.product-ctrl {
+		// display: block;
+		width: 26px;
+		height: 26px;
+		padding: 5px;
+		background-color: #666;
+		background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAMAAADypuvZAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAzUExURUdwTP///////////////////////////////////////////////////////////////8/RimEAAAAQdFJOUwDudZkPVzL7Id+xQr+K0WiwaJlcAAABMUlEQVRIx+1V27KDIAyUSwgBRP7/a0u00ypaQmfOmfaheXBAs3E3CWGafvYd5gwhknFvQLwpdzN+EGK1Yn9EfiptRzBA7BwqMxd4RSCLSeyY47aLmXepL80a5qSW55uFqaLpcFzF4HzwsPMaR7+AbFzCKV8+7BlffKJ4GY4uwwkkLomvcktPrl3rvUvRUGKbYjgcK+FWdtxiL3U11ixW1/h3hvNwW9ZWnj9x6Lz27ztRIRnUOtVcyqDW6QMgnwIczxOE5AUQ9yUmDdFb6yPoxD1mBBBgORmCpMlvwZ+I9KhONxEWTCKFqCiZvcAvSPm/g3AMhE0DF/EucqXp8jopxXM813l5HDT117GPiVVCM7IyD9AOQ8cjOLdHWRXR1PluyBImX40RCISvAEgBpp/9id0AtW0Z2VD6WC0AAAAASUVORK5CYII=);
+		background-repeat: no-repeat;
+		background-position: 50%;
+		background-size: 26px 26px;
+		border-radius: 50%;
+
+
+	}
+
+
 
 	.product-image {
 		image {
@@ -90,13 +126,13 @@
 	}
 
 	.discounts {
-		
+
 		margin: 20px 0;
 		padding: 10px 20px;
 		background: #FFFFFF;
 		border-radius: 10px;
-		@include flex-layout(flex-start,center)
-		text {
+
+		@include flex-layout(flex-start, center) text {
 			margin-left: 20px;
 			font-size: 12px;
 		}
@@ -109,7 +145,8 @@
 
 		view {
 			padding: 20px 0;
-			@include flex-layout(flex-start,center);
+			@include flex-layout(flex-start, center);
+
 			text {
 				font-size: 12px;
 				margin-left: 20px;
