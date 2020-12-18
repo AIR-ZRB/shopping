@@ -9,7 +9,7 @@
 			<image :src="product.image"></image>
 		</view>
 		<view class="product-message">
-			<text class="price">￥{{product.price}}</text>
+			<text class="price">{{product.price}}</text>
 			<view>
 				<text class="title">{{product.title}}</text>
 				<text class="warn">【关注店铺领券下单】【本店为小米品牌授权店铺，全部商品自营同款放心选购】【一年质保，售后无忧】进店购买 </text>
@@ -24,7 +24,7 @@
 		<view class="delivery">
 			<view>
 				<h3 class="">已选</h3>
-				<text>小米手表color 雅典黑，新款手表，1个</text>
+				<text>雅典黑，新款商品，1个</text>
 			</view>
 			<view>
 				<h3>送至</h3>
@@ -53,9 +53,18 @@
 		methods: {
 
 		},
-		created(){
-			console.log(this.$route.query)
+		created() {
+			const that = this;
+			// console.log(this.$route.query);
+			const id = that.$route.query.id;
 			console.log()
+			uni.request({
+				url: `http://localhost:4000/product?id=${id}`,
+				method: 'GET',
+				success: function(res) {
+					that.product = res.data[0];
+				}
+			})
 		}
 	}
 </script>
@@ -87,8 +96,6 @@
 		background-position: 50%;
 		background-size: 26px 26px;
 		border-radius: 50%;
-
-
 	}
 
 
