@@ -97,6 +97,8 @@ uni-page-body {
 	flex-wrap: $wrap;
 }
 
+
+
 @mixin ipad-query {
 	@media screen and (min-width: 768px) {
 		// 相当于插槽

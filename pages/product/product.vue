@@ -12,7 +12,7 @@
 			<text class="price">{{product.price}}</text>
 			<view>
 				<text class="title">{{product.title}}</text>
-				<text class="warn">【关注店铺领券下单】【本店为小米品牌授权店铺，全部商品自营同款放心选购】【一年质保，售后无忧】进店购买 </text>
+				<text class="warn">【关注店铺领券下单】【本店为牌授权店铺，全部商品自营同款放心选购】【一年质保，售后无忧】进店购买 </text>
 			</view>
 		</view>
 
