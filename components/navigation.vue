@@ -30,6 +30,8 @@
 	background-color: #ffffff;
 	z-index: 2;
 	padding: 0 10px;
+	top: 0;
+	// margin-bottom: 50px;
 	position: fixed;
 	@include flex-layout(space-between,center);
 	font-size: 18px;

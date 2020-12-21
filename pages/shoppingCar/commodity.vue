@@ -11,7 +11,8 @@
 			<!-- 商品图片 -->
 			<view class="radio">
 				<un-radio :select="items.check" @toggle="itemsChange(index)" />
-				<view class="image"></view>
+				<!-- <view class="image"></view> -->
+				<image class="image" :src="items.picture"></image>
 			</view>
 
 
@@ -99,6 +100,7 @@
 
 <style lang="scss">
 	.commodity {
+		// margin-top: ;
 		padding: 20px 10px;
 		background: white;
 		border-radius: 5px;
@@ -120,7 +122,7 @@
 				position: absolute;
 
 				.image {
-					background-color: red;
+					// background-color: red;
 					@include box-size(200rpx, 200rpx, 144px, 144px);
 					border-radius: 5px;
 				}
