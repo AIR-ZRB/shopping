@@ -26,7 +26,8 @@
 	.login {
 		width: 100%;
 		height: 100%;
-		background: #2A3B71;
+		// background: #2A3B71;
+		background: #FAB3B3;
 		overflow: hidden;
 		position: relative;
 
@@ -37,9 +38,9 @@
 			left: 0;
 			width: 0;
 			height: 0;
-			border-top: 50px solid transparent;
-			border-right: 1000px solid transparent;
-			border-bottom: 150px solid #fff;
+			// border-top: 50px solid transparent;
+			// border-right: 1000px solid transparent;
+			// border-bottom: 150px solid #fff;
 
 		}
 	}
@@ -60,7 +61,8 @@
 			margin-top: 30px;
 
 			text {
-				color: #8193B9;
+				// color: #8193B9;
+				color: #FFF;
 				letter-spacing: 1px;
 			}
 
