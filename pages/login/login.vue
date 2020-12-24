@@ -2,7 +2,7 @@
 	<view class="login">
 
 		<view class="login-box">
-			<text class="login-title">LOGIN</text>
+			<text class="login-title">青商城</text>
 			<view class="login-input">
 				<text>Phone</text>
 				<input class="uni-input" placeholder="请输入电话号码" />
@@ -26,8 +26,8 @@
 	.login {
 		width: 100%;
 		height: 100%;
-		// background: #2A3B71;
 		background: #FAB3B3;
+		// background-image: linear-gradient(to top,#F20300, #FFCABA);
 		overflow: hidden;
 		position: relative;
 
@@ -38,11 +38,13 @@
 			left: 0;
 			width: 0;
 			height: 0;
-			// border-top: 50px solid transparent;
-			// border-right: 1000px solid transparent;
-			// border-bottom: 150px solid #fff;
 
 		}
+	}
+	.login-title {
+		width: 100%;
+		display: block;
+		text-align: center;
 	}
 
 	.login-box {
