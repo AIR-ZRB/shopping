@@ -3,8 +3,8 @@
 		<un-navigation>
 			<text>我的</text>
 		</un-navigation>
-		
-		 
+
+
 		<view class="author">
 			<view class="author-picture">
 				{{authorName}}
@@ -126,24 +126,38 @@
 			};
 		},
 		computed: {
-			authorName(){
-				return this.username.slice(0,1)
+			authorName() {
+				return this.username.slice(0, 1)
 			}
 		},
 		components: {
 			shoppingItems,
 			unNavigation,
+		},
+		created() {
+			const isLogin = localStorage.getItem("login");
+			if (!isLogin) {
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
+	.my {
+		width: 100%;
+		height: 100%;
+		background: #F7F7F7;
+	}
+
 	.author {
 		@include flex-layout(none, center);
 		flex-wrap: wrap;
 		padding: 10px;
-		padding-top:60px;
-		background: #FE2745;
+		padding-top: 60px;
+		// background-image: linear-gradient(to right bottom, #FE2745, #FB6249);
 		color: #ffffff;
 
 		.author-picture {
@@ -155,7 +169,7 @@
 			border: 2px solid #000;
 			text-align: center;
 			font-size: 28px;
-			
+
 		}
 
 		.user-message {
@@ -168,6 +182,7 @@
 				display: block;
 				font-size: 20px;
 			}
+
 			text {
 				font-size: 14px;
 				margin-right: 10px;
@@ -181,6 +196,7 @@
 
 			view {
 				width: 33%;
+
 				text {
 					text-align: center;
 					display: block;
@@ -209,22 +225,23 @@
 		height: 100px;
 		margin-top: 20px;
 	}
+
 	.serve {
 		@include flex-layout(center, center);
 		height: 200px;
-		
+
 		.serve-title {
 			font-size: 14px;
-			font-weight: 700;			
+			font-weight: 700;
 		}
-		
-		
+
+
 		text {
 			font-size: 16px;
 			width: 100%;
 			display: block;
 			padding-left: 20px;
 		}
-		
+
 	}
 </style>
