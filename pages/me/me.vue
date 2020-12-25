@@ -157,7 +157,7 @@
 		flex-wrap: wrap;
 		padding: 10px;
 		padding-top: 60px;
-		// background-image: linear-gradient(to right bottom, #FE2745, #FB6249);
+		background-image: linear-gradient(to right bottom, #FE2745, #FB6249);
 		color: #ffffff;
 
 		.author-picture {
@@ -218,15 +218,21 @@
 	.order-messsage {
 		@include flex-layout(center, center);
 		height: 100px;
+		background: #FFFFFF;
+		border-radius: 20px;
 	}
 
 	.discounts {
 		@include flex-layout(center, center);
 		height: 100px;
-		margin-top: 20px;
+		margin: 20px 0;
+		background: #FFFFFF;
+		border-radius: 20px;
 	}
 
 	.serve {
+		background: #FFFFFF;
+		border-radius: 20px;
 		@include flex-layout(center, center);
 		height: 200px;
 
