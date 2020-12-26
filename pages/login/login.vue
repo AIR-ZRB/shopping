@@ -5,12 +5,12 @@
 			<text class="login-title">青商城</text>
 			<view class="login-input">
 				<text>Phone</text>
-				<input class="uni-input" placeholder="请输入电话号码" />
+				<input class="uni-input" placeholder="请输入电话号码" v-model.trim="phoneNumber" />
 				<text>Password</text>
-				<input class="uni-input" placeholder="请输入密码" type="password" />
+				<input class="uni-input" placeholder="请输入密码" type="password" v-model.trim="password" />
 				<text class="forget">Forget Password?</text>
 			</view>
-			<button>LOGIN</button>
+			<button @click="login">LOGIN</button>
 		</view>
 
 	</view>
@@ -18,7 +18,24 @@
 
 <script>
 	export default {
-
+		data() {
+			return {
+				phoneNumber: "admin",
+				password: "admin"
+			}
+		},
+		methods: {
+			login() {
+				if (this.phoneNumber === "admin" && this.password === "admin") {
+					localStorage.setItem("login","true");
+					console.log("伪登录Success");
+					
+					uni.navigateBack({ //uni.navigateTo跳转的返回，默认1为返回上一级
+						delta: 1
+					});
+				}
+			}
+		}
 	}
 </script>
 
@@ -41,6 +58,7 @@
 
 		}
 	}
+
 	.login-title {
 		width: 100%;
 		display: block;
