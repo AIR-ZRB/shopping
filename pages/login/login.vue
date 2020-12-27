@@ -12,24 +12,30 @@
 			</view>
 			<button @click="login">LOGIN</button>
 		</view>
-
+		<message text="登录成功" :show="isShow"/>
 	</view>
 </template>
 
 <script>
+	import message from "@/components/message.vue";
 	export default {
 		data() {
 			return {
 				phoneNumber: "admin",
-				password: "admin"
+				password: "admin",
+				isShow: false
 			}
+		},
+		components: {
+			message
 		},
 		methods: {
 			login() {
 				if (this.phoneNumber === "admin" && this.password === "admin") {
-					localStorage.setItem("login","true");
+					localStorage.setItem("login", "true");
 					console.log("伪登录Success");
-					
+					this.isShow = true;
+
 					uni.navigateBack({ //uni.navigateTo跳转的返回，默认1为返回上一级
 						delta: 1
 					});
